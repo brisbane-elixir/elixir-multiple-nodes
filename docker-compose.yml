@@ -5,8 +5,16 @@ services:
     build: .
     ports:
        - 4000:4000
+    volumes:
+       - ./mix.exs:/usr/src/app/mix.exs
+       - ./lib:/usr/src/app/lib
+       - ./web:/usr/src/app/web
 
   node2:
     build: .
     ports:
        - 4001:4000
+    volumes:
+       - ./mix.exs:/usr/src/app/mix.exs
+       - ./lib:/usr/src/app/lib
+       - ./web:/usr/src/app/web
