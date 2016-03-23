@@ -1,4 +1,5 @@
 # MultiNode
+Sample phoenix app to play with elixir on multiple nodes
 
 To start your Phoenix app:
 
