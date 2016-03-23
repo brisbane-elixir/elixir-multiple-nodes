@@ -1,0 +1,12 @@
+version: '2'
+
+services:
+  node1:
+    build: .
+    ports:
+       - 4000:4000
+
+  node2:
+    build: .
+    ports:
+       - 4001:4000
