@@ -18,7 +18,7 @@ Fire up a bash console on node1:
 `dc run node1 /bin/bash`
 
 In there, we start iex. However, for distributed erlang, our nodes need a name, the hostname/IP, and a cookie.
-`iex --name multinode@$(ifconfig | awk '/inet addr/{print substr($2,6)}' | head -1) --cookie monster`
+`iex --name multinode@$(ifconfig | awk '/inet addr/{print substr($2,6)}' | head -1) --cookie monster -S mix`
 
 Do the same for node 2 in a new terminal window, so we have an iex console to both instances of our app.
 
@@ -42,6 +42,7 @@ Now, listing nodes from either node shows us the other node:
 :erlang.nodes
 # => [:"multinode@172.18.0.5"]
 ```
+Note that this only shows us nodes other than the current node.
 
 # Running functions distributed
 The most basic thing we can do is run some code on another node. Let's try it:
@@ -76,9 +77,18 @@ And add it the applications list:
      applications: [:phoenix, :phoenix_html, :cowboy, :logger, :gettext,
                     :phoenix_ecto, :postgrex, :nodefinder]]
 ```
+I also found I had to add the package `erlang-xmerl` to the Dockerfile.
 
 And rebuild the docker container and run the app:
 
 ```
 dc build; dc up
 ```
+Fire up the iex console as before and run:
+```
+:nodefinder.multicast_start
+:erlang.nodes
+# => [:"multinode@172.18.0.5"]
+```
+Voila, our other node has been discovered and is in our nodes list, automatically. We could easily add the `multicast_start` call to the start-up
+of our app, so that any node to start just joins the cluster.

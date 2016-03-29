@@ -10,7 +10,7 @@
   "jsx": {:hex, :jsx, "2.1.1"},
   "lhttpc": {:hex, :lhttpc, "1.3.0"},
   "meck": {:hex, :meck, "0.8.4"},
-  "nodefinder": {:git, "https://github.com/okeuday/nodefinder.git", "82766e3790b8235eaedf045cbd6ebfc4e332d40c", []},
+  "nodefinder": {:hex, :nodefinder, "1.5.1"},
   "phoenix": {:hex, :phoenix, "1.1.4"},
   "phoenix_ecto": {:hex, :phoenix_ecto, "2.0.1"},
   "phoenix_html": {:hex, :phoenix_html, "2.5.1"},

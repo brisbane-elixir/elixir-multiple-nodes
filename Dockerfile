@@ -2,7 +2,7 @@ FROM marcelocg/phoenix:v1.1.4
 
 RUN export DEBIAN_FRONTEND=noninteractive && \
   apt-get update -q && \
-  apt-get -y install rebar erlang-parsetools && \
+  apt-get -y install rebar erlang-parsetools erlang-xmerl && \
   apt-get clean -y && \
   rm -rf /var/cache/apt/*
 

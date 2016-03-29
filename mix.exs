@@ -37,7 +37,7 @@ defmodule MultiNode.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.9"},
      {:cowboy, "~> 1.0"},
-     {:nodefinder, github: 'okeuday/nodefinder'}
+     {:nodefinder, "~> 1.5.1"}
     ]
   end
 
