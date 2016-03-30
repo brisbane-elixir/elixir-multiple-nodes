@@ -151,6 +151,10 @@ to provide these services. Many Rails app that depend on tools like Memcache, Re
 technologies etc etc, could be build in Elixir/Erlang with no dependencies...except maybe one database for persistence,
 and acheive much greater performance.
 
+You can find more info PubSub and how to use it directly here:
+
+https://hexdocs.pm/phoenix/Phoenix.PubSub.html
+
 ## Channels on PubSub
 The main thing PubSub is used for inside phoenix, is channels (Websockets). Channels are generally
 a persistent connection from the client to an instance of the application. In order for data sent
