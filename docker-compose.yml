@@ -9,6 +9,7 @@ services:
        - ./mix.exs:/usr/src/app/mix.exs
        - ./lib:/usr/src/app/lib
        - ./web:/usr/src/app/web
+       - ./config:/usr/src/app/config
 
   node2:
     build: .
@@ -18,3 +19,4 @@ services:
        - ./mix.exs:/usr/src/app/mix.exs
        - ./lib:/usr/src/app/lib
        - ./web:/usr/src/app/web
+       - ./config:/usr/src/app/config
