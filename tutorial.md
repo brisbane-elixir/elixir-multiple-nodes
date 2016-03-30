@@ -11,14 +11,20 @@ other nodes. Let's see how this default 'manual' way works:
 
 First, create a docker-compose alias to save some typing:
 
-`alias dc="docker-compose"`
+```
+alias dc="docker-compose"
+```
 
 Fire up a bash console on node1:
 
-`dc run node1 /bin/bash`
+```
+dc run node1 /bin/bash
+```
 
 In there, we start iex. However, for distributed erlang, our nodes need a name, the hostname/IP, and a cookie.
-`iex --name multinode@$(ifconfig | awk '/inet addr/{print substr($2,6)}' | head -1) --cookie monster -S mix`
+```
+iex --name multinode@$(ifconfig | awk '/inet addr/{print substr($2,6)}' | head -1) --cookie monster -S mix
+```
 
 Do the same for node 2 in a new terminal window, so we have an iex console to both instances of our app.
 
@@ -154,9 +160,20 @@ To demonstrate this, I'm going to follow the basic chat tutorial here:
 http://www.phoenixframework.org/docs/channels
 
 As one tiny extra step, I'm gonna add `:nodefinder.multicast_start` to the app start up, in
-``:
+`lib/multi_node.ex`, somewhere in `def start_link`:
 ```
+:nodefinder.multicast_start
+```
+
+Another thing, we need to remember to provide a node name and cookie to Phoexix when we start the app, just as did for our iex session:
+```
+elixir --name multinode@$(ifconfig | awk '/inet addr/{print substr($2,6)}' | head -1) --cookie monster -S mix phoenix.server
 ```
 
 After following the steps in the guide, I'm gonna connect one browser tab to one instance (port 4000)
 and another tab to the other (port 4001).
+
+With that, I should be able to post messages from one chat window...which appear in my other tab, connected to a different
+instance of my app.
+
+Awesome Stuff. Distributed.

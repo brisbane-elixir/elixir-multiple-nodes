@@ -21,4 +21,4 @@ RUN npm install
 
 ADD . /usr/src/app
 
-CMD mix phoenix.server
+CMD elixir --name multinode@$(ifconfig | awk '/inet addr/{print substr($2,6)}' | head -1) --cookie monster -S mix phoenix.server

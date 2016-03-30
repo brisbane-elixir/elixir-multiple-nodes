@@ -1,4 +1,4 @@
-defmodule HelloPhoenix.RoomChannel do
+defmodule MultiNode.RoomChannel do
   use Phoenix.Channel
 
   def join("rooms:lobby", _message, socket) do
@@ -10,6 +10,8 @@ defmodule HelloPhoenix.RoomChannel do
   end
 
   def handle_in("new_msg", %{"body" => body}, socket) do
+    IO.puts "I have nodes #{inspect :erlang.nodes}"
+    IO.puts "Got new message #{inspect body}"
     broadcast! socket, "new_msg", %{body: body}
     {:noreply, socket}
   end
